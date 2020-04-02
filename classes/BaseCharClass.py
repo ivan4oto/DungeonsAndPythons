@@ -52,7 +52,7 @@ class BaseChar():
         else:
             self.mana += int(mana_points)
 
-    def attack(self, by = ""):
+    def attack(self, by = str):
         if by == "weapon":
             if self.weapon != None:
                 return self.weapon.damage
@@ -66,6 +66,8 @@ class BaseChar():
                     return self.spell.damage
             else:
                 return self.base_damage
+        else:
+            return self.base_damage
 
     
 

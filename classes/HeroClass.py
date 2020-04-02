@@ -1,4 +1,5 @@
 from .BaseCharClass import BaseChar
+
 class Hero(BaseChar):
     def __init__(self, name = "", title = "", health = 100, mana = 100, mana_regeneration_rate = 2):
         super().__init__(health = 100, mana = 100)
@@ -10,5 +11,4 @@ class Hero(BaseChar):
     def known_as(self):
         return "{} the {}".format(self.name, self.title)
 
-x = Hero()
-print(x.base_damage)
+
