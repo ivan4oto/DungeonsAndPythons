@@ -5,7 +5,7 @@ class Spell:
 
     @verify_positive
     @verify_types(name=str, damage=int, mana_cost=int, cast_range=int)
-    def __init__(self, name, damage, mana_cost, cast_range):
+    def __init__(self, name, damage, mana_cost=20, cast_range=2):
         self.name = name
         self.damage = damage
         self.mana_cost = mana_cost

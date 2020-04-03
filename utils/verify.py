@@ -4,7 +4,7 @@ from collections import Iterable
 def verify_types(*args, **kwargs):
     expected_types = kwargs
 
-    def decorator(func):
+    def iter_over(func):
         def type_check(self, *args, **kwargs):
             arguments = list(args)
             result = {}
@@ -19,7 +19,7 @@ def verify_types(*args, **kwargs):
 
         return type_check
 
-    return decorator
+    return iter_over
 
 
 def verify_positive(func):
