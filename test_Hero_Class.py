@@ -6,7 +6,7 @@ from classes.spell import Spell
 
 class TestHeroClass(unittest.TestCase):
     def test_hero_init(self):
-        ivan = Hero('Ivan', 'Bug maker !')
+        ivan = Hero('Ivan', 'Bug maker !', 100, 100, 2)
 
         self.assertEqual(ivan.known_as(), 'Ivan the Bug maker !')
         self.assertEqual(ivan.get_mana(), 100)
@@ -14,7 +14,7 @@ class TestHeroClass(unittest.TestCase):
         self.assertEqual(ivan.base_damage, 0)
 
     def test_hero_use_weapon(self):
-        ivan = Hero('Ivan', 'Import Failure')
+        ivan = Hero('Ivan', 'Import Failure', 100,100, 2)
         sword = Weapon('Trouble maker', 30)
         ivan.equip(sword)
 
@@ -26,7 +26,7 @@ class TestHeroClass(unittest.TestCase):
         ivan.learn(fireball)
 
         result = ivan.attack(by = 'spell')
-        
+
         self.assertTrue(ivan.can_cast())
         self.assertEqual(result, 40)
         self.assertEqual(ivan.get_mana(), 85)

@@ -27,6 +27,8 @@ class BaseChar():
         self.spell = spell
 
     def can_cast(self):
+        if self.spell == None:
+            return False
         return self.get_mana() >= self.spell.mana_cost
             
 
