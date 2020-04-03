@@ -36,6 +36,14 @@ class TestDungeonClass(unittest.TestCase):
         self.assertTrue(result1)
         self.assertFalse(result2)
 
+    def test_move_hero_into_obstacle(self):
+        h = Hero('Ivan', 'Mountain goat')
+        d = Dungeon('level_test_spawn.txt')
+        d.spawn(h)
+        result1 = d.move_hero('left')
+
+        self.assertFalse(result1)    
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -27,7 +27,7 @@ class Dungeon:
 
     def move_hero(self, direction):
         if direction == 'up':
-            if self.hero_position['y']-1 < 0:
+            if self.hero_position['y']-1 < 0 or self.map[self.hero_position['y']-1][self.hero_position['x']] == '#':
                 return False
             else:
                 self.map[self.hero_position['y']][self.hero_position['x']] = '.'
@@ -36,7 +36,7 @@ class Dungeon:
                 return True
 
         elif direction == 'down':
-            if self.hero_position['y']+1 > len(self.map)-1:
+            if self.hero_position['y']+1 > len(self.map)-1 or self.map[self.hero_position['y']+1][self.hero_position['x']] == '#':
                 return False
             else:
                 self.map[self.hero_position['y']][self.hero_position['x']] = '.'
@@ -45,7 +45,7 @@ class Dungeon:
                 return True
 
         elif direction == 'right':
-            if self.hero_position['x'] > len(self.map)-1:
+            if self.hero_position['x']+1 > len(self.map)-1 or self.map[self.hero_position['y']][self.hero_position['x']+1] == '#':
                 return False
             else:
                 self.map[self.hero_position['y']][self.hero_position['x']] = '.'
@@ -54,7 +54,7 @@ class Dungeon:
                 return True
         
         elif direction == 'left':
-            if self.hero_position['x'] < 0:
+            if self.hero_position['x']-1 < 0 or self.map[self.hero_position['y']][self.hero_position['x']-1] == '#':
                 return False
             else:
                 self.map[self.hero_position['y']][self.hero_position['x']] = '.'
@@ -62,3 +62,9 @@ class Dungeon:
                 self.map[self.hero_position['y']][self.hero_position['x']] = 'H'
                 return True
 
+
+    def scan(self):
+        #scans area around hero for potential enemies
+        pass
+        
+    
