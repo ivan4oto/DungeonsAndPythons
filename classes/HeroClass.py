@@ -1,4 +1,4 @@
-from .BaseCharClass import BaseChar
+from BaseCharClass import BaseChar
 
 class Hero(BaseChar):
     def __init__(self, name = "", title = "", health = 100, mana = 100, mana_regeneration_rate = 2):

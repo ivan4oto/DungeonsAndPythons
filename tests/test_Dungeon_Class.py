@@ -1,5 +1,5 @@
 import unittest
-from DungeonClass import Dungeon
+from classes.DungeonClass import Dungeon
 from classes.HeroClass import Hero
 
 

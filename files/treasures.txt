@@ -1,0 +1,10 @@
+weapon,50,sword
+weapon,100,double_sword
+weapon,150,triple_sword
+health,10
+health,90
+health,30
+mana,30
+mana,40
+spell,50,Lightning_bold
+spell,100,Lightning_Thor
