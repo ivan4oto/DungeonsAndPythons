@@ -57,19 +57,19 @@ class BaseChar():
     def attack(self, by = str):
         if by == "weapon":
             if self.weapon != None:
-                return self.weapon.damage
+                return [self.weapon.damage,self.weapon]
             else:
-                return self.base_damage
+                return [self.base_damage]
 
         elif by == "spell":
             if self.spell != None:
                 if self.get_mana() >= self.spell.mana_cost:
                     self.mana -= self.spell.mana_cost
-                    return self.spell.damage
+                    return [self.spell.damage,self.spell]
             else:
-                return self.base_damage
+                return [self.base_damage]
         else:
-            return self.base_damage
+            return [self.base_damage]
 
     
 
