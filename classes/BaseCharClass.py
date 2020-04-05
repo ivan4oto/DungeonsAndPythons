@@ -5,7 +5,7 @@ class BaseChar():
 
         self.health = health
         self.mana = mana
-
+        
         self.base_damage = 0
         self.weapon = None
         self.spell = None

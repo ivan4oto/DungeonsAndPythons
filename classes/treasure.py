@@ -13,7 +13,7 @@ class Treasure:
         elif value_type == 'spell':
             self.item = Spell(name=name, damage=int(value))
         else:
-            self.type += f'{value_type} poison'
+            self.type += f'{value_type} potion'
             self.item = int(value)
 
     def __repr__(self):
