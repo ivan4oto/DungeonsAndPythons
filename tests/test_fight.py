@@ -4,6 +4,7 @@ from classes import Hero
 from classes.EnemyClass import Enemy
 from classes.fight import Fight
 from classes.spell import Spell
+from classes.treasure import Treasure
 from classes.weapon import Weapon
 
 
@@ -155,7 +156,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_start_fight_when_hero_strike_from_distance_enemy_return_dead_hero(self):
         hero = Hero("Pesho", "Padawan", health=100)
-        enemy = Enemy(health=200, damage=10)
+        enemy = Enemy(health=200, damage=50)
         weapon = Weapon("shodow", 40)
         spell = Spell("Abraka", 40)
         hero.learn(spell)
@@ -172,6 +173,37 @@ class MyTestCase(unittest.TestCase):
         hero.equip(weapon)
         spell = Spell("Abraka", 40)
         hero.learn(spell)
+        create_fight = Fight(hero, enemy)
+
+        result = create_fight.start_fight(1)
+
+        self.assertEqual(result, enemy)
+
+    def test_start_fight_when_hero_strike_after_mana_is_he_take_items_mana_return_dead_enemy(self):
+        hero = Hero("Pesho", "Padawan", health=100)
+        enemy = Enemy(health=200, damage=10)
+        weapon = Weapon("shodow", 40)
+        hero.equip(weapon)
+        treasure = Treasure(value_type="mana", value=50)
+        spell = Spell("Abraka", 40)
+        hero.learn(spell)
+        hero.add_item(treasure)
+        create_fight = Fight(hero, enemy)
+
+        result = create_fight.start_fight(1)
+
+        self.assertEqual(result, enemy)
+
+    def test_start_fight_when_hero_strike_from_distance_enemy_get_healing_return_dead_enemy(self):
+        hero = Hero("Pesho", "Padawan", health=100,mana=100)
+        enemy = Enemy(health=200, damage=10)
+        weapon = Weapon("shodow", 40)
+        treasure1 = Treasure(value_type="mana", value=100)
+        treasure2 = Treasure(value_type="health", value=100)
+        spell = Spell("Abraka", 40)
+        hero.learn(spell)
+        hero.add_item(treasure1)
+        hero.add_item(treasure2)
         create_fight = Fight(hero, enemy)
 
         result = create_fight.start_fight(1)
