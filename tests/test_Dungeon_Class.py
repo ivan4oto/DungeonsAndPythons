@@ -1,6 +1,7 @@
 import unittest
-from DungeonClass import Dungeon
+from classes.DungeonClass import Dungeon
 from classes.HeroClass import Hero
+from classes.EnemyClass import Enemy
 
 
 
@@ -43,6 +44,18 @@ class TestDungeonClass(unittest.TestCase):
         result1 = d.move_hero('left')
 
         self.assertFalse(result1)    
+
+    def test_fill_treasures_list_fills_correctly(self):
+        d = Dungeon('files/first_map.txt')
+        d.fill_treasures_list('files/treasures.txt')
+        self.assertEqual(len(d.treasures), 10)
+
+    def test_fill_enemies_list_fills_correctly(self):
+        d = Dungeon('files/first_map.txt')
+        d.fill_enemies_list('files/enemies.txt')
+        boolist = [isinstance(x, Enemy) for x in d.enemies]
+        self.assertEqual(len(d.enemies), 6)
+        self.assertTrue(all(boolist))
 
 
 if __name__ == '__main__':

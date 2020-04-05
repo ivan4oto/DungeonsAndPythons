@@ -1,4 +1,4 @@
-from pprint import pprint
+import pathlib
 from classes.EnemyClass import Enemy
 from classes.HeroClass import Hero
 from classes.spell import Spell
@@ -9,8 +9,24 @@ class Dungeon:
         with open(map) as f:
             self.map = f.readlines()
         self.map = [list(x.strip()) for x in self.map]
-
+        self.treasures = []
+        self.enemies = []
         self.hero_position = dict()
+
+    def fill_treasures_list(self, treasures = 'str'):
+        with open(treasures) as f:
+            self.treasures = f.readlines()
+        self.treasures = [x.strip() for x in self.treasures]
+        self.treasures = [x.split(',') for x in self.treasures]
+
+    def fill_enemies_list(self, enemies = 'str'):
+        with open(enemies) as f:
+            self.enemies = f.readlines()
+        self.enemies = [x.strip() for x in self.enemies]
+        self.enemies = [x.split(',') for x in self.enemies]
+        self.enemies = [list(map(int, results)) for results in self.enemies]
+        self.enemies = [Enemy(*x) for x in self.enemies]
+        
 
     def print_map(self):
         print([''.join(x) for x in self.map])
