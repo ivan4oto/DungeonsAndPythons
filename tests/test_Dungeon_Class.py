@@ -77,8 +77,8 @@ class TestDungeonClass(unittest.TestCase):
         h = Hero("Leeroy", "Jenkins")
         d.spawn(h)
         result = d.scan(5)
-        enemy1 = (0,4)
-        enemy2 = (2,1)
+        enemy1 = [(0,4), 3]
+        enemy2 = [(2,1), 2]
 
         self.assertIn(enemy1, result)
         self.assertIn(enemy2, result)
