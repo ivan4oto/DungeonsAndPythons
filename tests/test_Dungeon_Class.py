@@ -70,5 +70,19 @@ class TestDungeonClass(unittest.TestCase):
 
         self.assertEqual(len(h.items), 1)
         self.assertIsInstance(h.items[0], Treasure)
+
+    def test_scan_finds_enemies(self):
+        d = Dungeon('files/scantest_map.txt')
+        d.fill_enemies_list('files/enemies.txt')
+        h = Hero("Leeroy", "Jenkins")
+        d.spawn(h)
+        result = d.scan(5)
+        enemy1 = (0,4)
+        enemy2 = (2,1)
+
+        self.assertIn(enemy1, result)
+        self.assertIn(enemy2, result)
+
+
 if __name__ == '__main__':
     unittest.main()

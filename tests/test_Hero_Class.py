@@ -2,7 +2,7 @@ import unittest
 from classes.HeroClass import Hero
 from classes.weapon import Weapon
 from classes.spell import Spell
-
+from classes.treasure import Treasure
 
 class TestHeroClass(unittest.TestCase):
     def test_hero_init(self):
@@ -18,7 +18,7 @@ class TestHeroClass(unittest.TestCase):
         sword = Weapon('Trouble maker', 30)
         ivan.equip(sword)
 
-        self.assertEqual(ivan.attack(by = 'weapon'), 30)
+        self.assertEqual(ivan.attack(by = 'weapon')[0], 30)
 
     def test_hero_use_spell(self):
         ivan = Hero('Ivan', 'Import Failure')
@@ -28,7 +28,7 @@ class TestHeroClass(unittest.TestCase):
         result = ivan.attack(by = 'spell')
 
         self.assertTrue(ivan.can_cast())
-        self.assertEqual(result, 40)
+        self.assertEqual(result[0], 40)
         self.assertEqual(ivan.get_mana(), 85)
 
     def test_hero_take_dmg(self):
@@ -43,6 +43,21 @@ class TestHeroClass(unittest.TestCase):
         bratmu.take_healing(35)
 
         self.assertEqual(bratmu.get_health(), 95)
+
+    def test_hero_drinks_potions(self):
+        leeroy = Hero('Leeroy', 'Jenking', 100, 100)
+        leeroy.take_damage(50)
+        leeroy.mana -= 50
+        hp = Treasure('health', '30')
+        mp = Treasure('mana', '10')
+        leeroy.add_item(hp)
+        leeroy.add_item(mp)
+
+        leeroy.drink_potion('health')
+        leeroy.drink_potion('mana')
+        
+        self.assertEqual(leeroy.get_mana(), 60)
+        self.assertEqual(leeroy.get_health(), 80)  
 
         
 

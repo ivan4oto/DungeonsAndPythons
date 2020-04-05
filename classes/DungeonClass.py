@@ -98,3 +98,18 @@ class Dungeon:
 
                 self.map[self.hero_position['y']][self.hero_position['x']] = 'H'
                 return True
+
+    def scan(self, scanrange):
+        foundEnemies = []
+        #Searches the Y axis
+        for y in range((self.hero_position['y']-scanrange), self.hero_position['y']+scanrange+1):
+            if y > 0 and y < len(self.map)-1:
+                if self.map[y][self.hero_position['x']] == 'E':
+                    foundEnemies.append((y, self.hero_position['x']))
+        #Searches the X axis
+        for x in range((self.hero_position['x']-scanrange), self.hero_position['x']+scanrange+1):
+            if x > 0 and x < len(self.map[self.hero_position['y']-1]):
+                if self.map[self.hero_position['y']][x] == 'E':
+                    foundEnemies.append((self.hero_position['y'], x))
+
+        return foundEnemies
