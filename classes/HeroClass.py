@@ -16,7 +16,7 @@ class Hero(BaseChar):
 
     def add_item(self, item):
         if len(self.items) == self.MAX_ITEMS:
-            raise ValueError('Inventory is full !')
+            print('Inventory is full !')
         self.items.append(item)
         return True
 
@@ -32,5 +32,9 @@ class Hero(BaseChar):
                     return True
                 elif x.type == 'mana potion' and potion_type == 'mana':
                     self.take_mana(x.item)
+
+    # def attack(self, by = str, dungeon):
+
+    #     super().attack(by = str)
                 
         

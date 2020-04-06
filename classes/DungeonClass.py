@@ -1,9 +1,9 @@
 from random import shuffle
-from classes.EnemyClass import Enemy
-from classes.HeroClass import Hero
-from classes.spell import Spell
-from classes.weapon import Weapon
-from classes.treasure import Treasure
+from .EnemyClass import Enemy
+from .HeroClass import Hero
+from .spell import Spell
+from .weapon import Weapon
+from .treasure import Treasure
     
 class Dungeon:
     def __init__(self, map = str):

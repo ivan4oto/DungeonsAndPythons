@@ -1,5 +1,5 @@
-from classes.spell import Spell
-from classes.weapon import Weapon
+from .spell import Spell
+from .weapon import Weapon
 from utils.verify import verify_positive, verify_types
 
 

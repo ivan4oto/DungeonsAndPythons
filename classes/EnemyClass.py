@@ -1,4 +1,4 @@
-from .BaseCharClass import BaseChar
+from classes.BaseCharClass import BaseChar
 
 class Enemy(BaseChar):
     def __init__(self, health = 100, mana = 100, damage = 20):

@@ -1,6 +1,6 @@
 import unittest
 
-from classes import Hero
+from classes.HeroClass import Hero
 from classes.EnemyClass import Enemy
 from classes.fight import Fight
 from classes.spell import Spell
