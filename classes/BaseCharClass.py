@@ -64,7 +64,7 @@ class BaseChar():
         elif by == "spell":
             if self.spell != None:
                 if self.get_mana() >= self.spell.mana_cost:
-                    self.mana -= self.spell.mana_cost
+                    # self.mana -= self.spell.mana_cost     ====== nz zasho go taksuvash tuk!!!!!!!
                     return [self.spell.damage,self.spell]
             else:
                 return [self.base_damage]
